@@ -203,6 +203,46 @@
           }
         }
       }
+    },
+    "cesium": {
+      "projectType": "library",
+      "root": "projects/cesium",
+      "sourceRoot": "projects/cesium/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/cesium/tsconfig.lib.json",
+            "project": "projects/cesium/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/cesium/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/cesium/src/test.ts",
+            "tsConfig": "projects/cesium/tsconfig.spec.json",
+            "karmaConfig": "projects/cesium/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/cesium/tsconfig.lib.json",
+              "projects/cesium/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }},
   "defaultProject": "benchmap"
 }

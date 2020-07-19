@@ -23,6 +23,10 @@
       "general-utils": [
         "dist/general-utils/general-utils",
         "dist/general-utils"
+      ],
+      "cesium": [
+        "dist/cesium/cesium",
+        "dist/cesium"
       ]
     }
   },

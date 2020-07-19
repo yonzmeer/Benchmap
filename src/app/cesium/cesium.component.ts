@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CesiumService } from 'projects/cesium/src/public-api';
 
 @Component({
   selector: 'app-cesium',
@@ -7,7 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CesiumComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private cesiumService: CesiumService
+  ) {
+  }
 
   ngOnInit(): void { }
 
