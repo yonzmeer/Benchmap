@@ -1,8 +1,14 @@
 import { Costume, Mood, Nationality, Target } from './models/target';
 import { randomArray, randomEnum, randomNumber, randomString, randomTime as randomDate } from './utils';
 
-export const empty = (): Target => {
-    return {} as Target;
+export const emptyTarget = (): Target => {
+    return {
+        name: undefined,
+        updateTime: undefined,
+        mood: undefined,
+        nationality: undefined,
+        costumes: [],
+    };
 };
 
 export const randomTarget = (): Target => {
@@ -11,7 +17,7 @@ export const randomTarget = (): Target => {
         updateTime: randomDate(),
         mood: randomEnum(Mood),
         nationality: randomEnum(Nationality),
-        costumes: new Set(randomArray(5, () => randomEnum(Costume))),
+        costumes: [...new Set(randomArray(5, () => randomEnum(Costume)))],
     };
 };
 

@@ -3,7 +3,7 @@ export interface Target {
     mood: Mood;
     updateTime: number;
     nationality: Nationality;
-    costumes: Set<Costume>;
+    costumes: Costume[];
 }
 
 export enum Mood {
@@ -14,12 +14,12 @@ export enum Mood {
 }
 
 export enum Nationality {
-    russian,
-    english,
-    american,
-    french,
-    chinese,
-    german,
+    Russian,
+    English,
+    American,
+    French,
+    Chinese,
+    German,
 }
 
 export enum Costume {

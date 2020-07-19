@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Target, TargetsService } from 'projects/targets/src/public-api';
+import { Mood, Nationality, Target, TargetsService, emptyTarget } from 'projects/targets/src/public-api';
 import { Subject } from 'rxjs';
 
 @Component({
@@ -10,6 +10,11 @@ import { Subject } from 'rxjs';
 export class AppComponent {
 
   target$ = new Subject<Target>();
+
+  columns = Object.keys(emptyTarget());
+
+  Mood = Mood;
+  Nationality = Nationality;
 
   constructor(
     private targetsService: TargetsService,
