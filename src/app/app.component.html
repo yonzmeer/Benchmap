@@ -1,0 +1,12 @@
+<h1>
+    {{(target$ | async)?.mood}}
+</h1>
+<table *ngIf="target$ | async as target">
+    <tr>
+        <td>{{target?.name}}</td>
+        <td>{{target?.mood}}</td>
+        <td>{{target?.nationality}}</td>
+        <td>{{target?.updateTime | date: 'shortDate'}} </td>
+        <td>{{target?.costumes}}</td>
+    </tr>
+</table>

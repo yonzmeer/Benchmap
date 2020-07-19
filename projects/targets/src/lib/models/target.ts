@@ -7,10 +7,10 @@ export interface Target {
 }
 
 export enum Mood {
-    good = 'good',
-    bad = 'bad',
-    neutral = 'neutral',
-    chill = 'chill',
+    good,
+    bad,
+    neutral,
+    chill,
 }
 
 export enum Nationality {

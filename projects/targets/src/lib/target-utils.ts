@@ -1,11 +1,11 @@
-import { Target, Mood, Nationality, Costume } from './models/target';
-import { randomEnum, randomArray, randomNumber, randomString, randomTime as randomDate } from './utils';
+import { Costume, Mood, Nationality, Target } from './models/target';
+import { randomArray, randomEnum, randomNumber, randomString, randomTime as randomDate } from './utils';
 
 export const empty = (): Target => {
     return {} as Target;
 };
 
-export const random = (): Target => {
+export const randomTarget = (): Target => {
     return {
         name: randomString(randomNumber(5, 10)),
         updateTime: randomDate(),
