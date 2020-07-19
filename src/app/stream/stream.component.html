@@ -1,0 +1,12 @@
+<table *ngIf="target$ | async as target">
+    <tr>
+        <td class='column' *ngFor="let column of columns">{{column}}</td>
+    </tr>
+    <tr>
+        <td>{{target?.name}}</td>
+        <td>{{target?.mood | enum2String: Mood}}</td>
+        <td>{{target?.nationality | enum2String: Nationality}} </td>
+        <td>{{target?.updateTime | date: 'shortDate'}} </td>
+        <td>[{{target?.costumes}}]</td>
+    </tr>
+</table>

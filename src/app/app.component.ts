@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { Mood, Nationality, Target, TargetsService, emptyTarget } from 'projects/targets/src/public-api';
-import { Subject } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,17 +7,8 @@ import { Subject } from 'rxjs';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  menuItems = this.router.config.filter(route => route.data?.menu).map(route => route.path);
 
-  target$ = new Subject<Target>();
-
-  columns = Object.keys(emptyTarget());
-
-  Mood = Mood;
-  Nationality = Nationality;
-
-  constructor(
-    private targetsService: TargetsService,
-  ) {
-    this.targetsService.createTargetStream(300).subscribe(this.target$);
+  constructor(private router: Router) {
   }
 }
