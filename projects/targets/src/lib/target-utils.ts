@@ -1,5 +1,5 @@
 import { Costume, Mood, Nationality, Target } from './models/target';
-import { randomArray, randomEnum, randomNumber, randomString, randomTime as randomDate } from './utils';
+import { randomString, randomNumber, randomEnum, randomArray, randomDate } from 'projects/general-utils/src/public-api';
 
 export const emptyTarget = (): Target => {
     return {

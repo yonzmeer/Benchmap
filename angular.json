@@ -163,6 +163,46 @@
           }
         }
       }
+    },
+    "general-utils": {
+      "projectType": "library",
+      "root": "projects/general-utils",
+      "sourceRoot": "projects/general-utils/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/general-utils/tsconfig.lib.json",
+            "project": "projects/general-utils/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/general-utils/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/general-utils/src/test.ts",
+            "tsConfig": "projects/general-utils/tsconfig.spec.json",
+            "karmaConfig": "projects/general-utils/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/general-utils/tsconfig.lib.json",
+              "projects/general-utils/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }},
   "defaultProject": "benchmap"
 }

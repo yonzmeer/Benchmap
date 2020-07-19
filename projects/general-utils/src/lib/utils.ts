@@ -21,6 +21,6 @@ export const randomArray = (length: number, filler: () => any): any[] => {
     return Array.from({ length }, filler);
 };
 
-export const randomTime = (): number => {
+export const randomDate = (): number => {
     return randomNumber(new Date(2020, 1, 1).getTime(), new Date(2020, 12, 1).getTime());
 };
