@@ -214,7 +214,7 @@
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
             "tsConfig": "projects/cesium/tsconfig.lib.json",
-            "project": "projects/cesium/ng-package.json"
+            "project": "projects/cesium/ng-package.json",
           },
           "configurations": {
             "production": {
@@ -243,6 +243,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "benchmap"
 }

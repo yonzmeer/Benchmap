@@ -24,3 +24,11 @@ export const randomArray = (length: number, filler: () => any): any[] => {
 export const randomDate = (): number => {
     return randomNumber(new Date(2020, 1, 1).getTime(), new Date(2020, 12, 1).getTime());
 };
+
+export const radiansToDegrees = (radians: number) => {
+    return radians * (180 / Math.PI);
+};
+
+export const degreesToRadians = (degrees: number) => {
+    return degrees * (Math.PI / 180);
+};

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CesiumService } from 'projects/cesium/src/public-api';
+import { CesiumMapService } from 'projects/cesium-map/src/public-api';
 
 @Component({
   selector: 'app-cesium',
@@ -9,7 +9,7 @@ import { CesiumService } from 'projects/cesium/src/public-api';
 export class CesiumComponent implements OnInit {
 
   constructor(
-    private cesiumService: CesiumService
+    private cesiumMapService: CesiumMapService
   ) {
   }
 
