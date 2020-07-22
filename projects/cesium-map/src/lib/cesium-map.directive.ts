@@ -24,7 +24,6 @@ export class CesiumMapDirective implements OnInit {
   }
 
   ngOnInit() {
-    console.log('directive init');
     this.cesiumMapService.initCesiumViewer(this.elementRef, this.initialLocation);
   }
 }
