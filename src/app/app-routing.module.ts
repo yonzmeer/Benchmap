@@ -9,7 +9,7 @@ const routes: Routes = [
     path: 'cesium',
     component: CesiumComponent,
     data: { menu: true },
-    loadChildren: () => import('../../projects/cesium-map/src/public-api').then(m => m.CesiumMapModule)
+    loadChildren: () => import('../../projects/cesium-map/src/public-api').then(m => m.CesiumMapModule),
   },
   { path: 'stream', component: StreamComponent, data: { menu: true } },
   { path: '**', pathMatch: 'full', redirectTo: '' },

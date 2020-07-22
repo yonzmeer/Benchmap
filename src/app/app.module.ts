@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { CesiumComponent } from './cesium/cesium.component';
 import { StreamComponent } from './stream/stream.component';
+import { CesiumMapModule } from 'projects/cesium-map/src/public-api';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { StreamComponent } from './stream/stream.component';
     AppRoutingModule,
     SharedModule,
     TargetsModule.forRoot(),
+    CesiumMapModule
   ],
   providers: [],
   bootstrap: [AppComponent]

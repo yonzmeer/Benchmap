@@ -1,20 +1,12 @@
-import { NgModule, ModuleWithProviders } from '@angular/core';
-import { CesiumMapService as CesiumMapService } from './cesium-map.service';
+import { NgModule } from '@angular/core';
 import { CesiumMapDirective } from './cesium-map.directive';
-
+import { CesiumMapService } from './cesium-map.service';
 
 @NgModule({
   declarations: [CesiumMapDirective],
   imports: [
   ],
-  exports: []
+  exports: [CesiumMapDirective],
+  providers: [CesiumMapService]
 })
-export class CesiumMapModule {
-  static forRoot(): ModuleWithProviders {
-    console.log('loaded');
-    return {
-      ngModule: CesiumMapModule,
-      providers: [CesiumMapService]
-    };
-  }
-}
+export class CesiumMapModule { }

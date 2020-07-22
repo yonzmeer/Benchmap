@@ -4,9 +4,7 @@ import { switchMap, take } from 'rxjs/operators';
 import { Target } from './models/target';
 import { randomTarget } from './target-utils';
 
-@Injectable({
-    providedIn: 'root'
-})
+@Injectable()
 export class TargetsService {
 
     constructor() { }
