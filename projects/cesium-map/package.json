@@ -6,8 +6,6 @@
     "@angular/core": "^9.1.12"
   },
   "dependencies": {
-    "@types/cesium": "^1.67.12",
-    "cesium": "^1.71.0",
     "tslib": "^1.10.0"
   }
 }
