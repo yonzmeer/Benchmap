@@ -1,4 +1,5 @@
 export interface Target {
+    id: string;
     name: string;
     mood: Mood;
     updateTime: number;

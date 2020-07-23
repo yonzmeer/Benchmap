@@ -9,5 +9,7 @@ import { Router } from '@angular/router';
 export class AppComponent {
   menuItems = this.router.config.filter(route => route.data?.menu).map(route => route.path);
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {
+
+  }
 }

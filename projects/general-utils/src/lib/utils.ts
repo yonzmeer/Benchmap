@@ -21,6 +21,10 @@ export const randomArray = (length: number, filler: () => any): any[] => {
     return Array.from({ length }, filler);
 };
 
+export const randomEnumArray = <T>(length: number, anEnum: T): T[keyof T][] => {
+    return [...new Set(randomArray(length, () => randomEnum(anEnum)))];
+};
+
 export const randomDate = (): number => {
     return randomNumber(new Date(2020, 1, 1).getTime(), new Date(2020, 12, 1).getTime());
 };

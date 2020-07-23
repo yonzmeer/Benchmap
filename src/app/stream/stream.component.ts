@@ -11,8 +11,7 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 })
 export class StreamComponent implements OnDestroy {
 
-  target$ = new Subject<Target>();
-
+  targets$ = new Subject<Target[]>();
 
   columns = Object.keys(emptyTarget());
 
@@ -22,9 +21,12 @@ export class StreamComponent implements OnDestroy {
   constructor(
     private targetsService: TargetsService,
   ) {
-    this.targetsService.createTargetStream(300).pipe(
+    this.targetsService.createTargetStream(
+      { targetsAmount: 100 },
+      { updatesAmount: 5000, updateInterval: 300 }
+    ).pipe(
       untilDestroyed(this),
-    ).subscribe(this.target$);
+    ).subscribe(this.targets$);
   }
 
   ngOnDestroy(): void { }

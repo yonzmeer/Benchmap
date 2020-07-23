@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from 'projects/cesium-map/src/lib/models';
-import { Router, NavigationStart, NavigationEnd } from '@angular/router';
-import { Subject, BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-cesium',

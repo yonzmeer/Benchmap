@@ -1,12 +1,12 @@
 import { ElementRef, Injectable, NgZone } from '@angular/core';
-import { BehaviorSubject, Subject, Observable } from 'rxjs';
-import { Location } from './models/location';
-import { MapFeature } from './models/map-feature';
 import {
-  Viewer, ImageryLayer, SceneMode,
-  ArcGisMapServerImageryProvider, Camera, Rectangle, Cartesian3, Color, LabelStyle, VerticalOrigin, Cartesian2
+  ArcGisMapServerImageryProvider, Camera, ImageryLayer,
+  Rectangle, SceneMode, Viewer,
 } from 'cesium';
 import { degreesToRadians } from 'projects/general-utils/src/public-api';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { Location } from './models/location';
+import { MapFeature } from './models/map-feature';
 
 @Injectable()
 export class CesiumMapService {
@@ -76,7 +76,7 @@ export class CesiumMapService {
         selectionIndicator: false,
         navigationHelpButton: false,
         navigationInstructionsInitiallyVisible: false,
-        clockViewModel: null
+        clockViewModel: null,
       });
     });
 
