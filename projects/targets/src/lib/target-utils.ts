@@ -6,6 +6,7 @@ export const emptyTarget = (): Target => {
     return {
         id: undefined,
         name: undefined,
+        nickname: undefined,
         latLng: undefined,
         updateTime: undefined,
         mood: undefined,
@@ -18,6 +19,7 @@ export const randomTarget = (): Target => {
     return {
         id: uuid(),
         name: randomString(randomNumber(5, 10)),
+        nickname: randomString(randomNumber(5, 10)),
         latLng: randomLatLng(),
         updateTime: randomDate(),
         mood: randomEnum(Mood),

@@ -6,6 +6,7 @@
     <tr *ngFor="let target of targets">
         <td>{{ target?.id }}</td>
         <td>{{ target?.name }}</td>
+        <td>{{ target?.nickname }}</td>
         <td>{{ target?.latLng | latlng2String }}</td>
         <td>{{ target?.updateTime | date: 'shortDate' }} </td>
         <td>{{ target?.mood | enum2String: Mood }}</td>

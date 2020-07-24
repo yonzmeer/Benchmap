@@ -1,5 +1,6 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { TargetsService } from './targets.service';
+import { ImagesService } from './images.service';
 
 @NgModule({
     declarations: [],
@@ -10,7 +11,7 @@ export class TargetsModule {
     static forRoot(): ModuleWithProviders {
         return {
             ngModule: TargetsModule,
-            providers: [TargetsService]
+            providers: [TargetsService, ImagesService]
         };
     }
 }

@@ -3,6 +3,7 @@ import { LatLng } from 'projects/general-utils/src/lib/models';
 export interface Target {
     id: string;
     name: string;
+    nickname: string;
     latLng: LatLng;
     mood: Mood;
     updateTime: number;
