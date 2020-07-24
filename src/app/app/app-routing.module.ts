@@ -5,12 +5,7 @@ import { StreamComponent } from '../stream/stream.component';
 
 
 const routes: Routes = [
-  {
-    path: 'cesium',
-    component: CesiumComponent,
-    data: { menu: true },
-    loadChildren: () => import('../../../projects/cesium-map/src/public-api').then(m => m.CesiumMapModule),
-  },
+  { path: 'cesium', component: CesiumComponent, data: { menu: true } },
   { path: 'stream', component: StreamComponent, data: { menu: true } },
   { path: '**', pathMatch: 'full', redirectTo: '' },
 ];

@@ -4,11 +4,12 @@
         <td class='column' *ngFor="let column of columns">{{column}}</td>
     </tr>
     <tr *ngFor="let target of targets">
-        <td>{{target?.id}}</td>
-        <td>{{target?.name}}</td>
-        <td>{{target?.updateTime | date: 'shortDate'}} </td>
-        <td>{{target?.mood | enum2String: Mood}}</td>
-        <td>{{target?.nationality | enum2String: Nationality}} </td>
-        <td>[{{target?.costumes}}]</td>
+        <td>{{ target?.id }}</td>
+        <td>{{ target?.name }}</td>
+        <td>{{ target?.latLng | latlng2String }}</td>
+        <td>{{ target?.updateTime | date: 'shortDate' }} </td>
+        <td>{{ target?.mood | enum2String: Mood }}</td>
+        <td>{{ target?.nationality | enum2String: Nationality }} </td>
+        <td>[{{ target?.costumes }}]</td>
     </tr>
 </table>

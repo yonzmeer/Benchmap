@@ -1,3 +1,11 @@
+import { LatLng } from './models';
+
+export const randomLatLng = (): LatLng => {
+    return {
+        latitude: parseFloat(randomNumber(29, 35, false).toPrecision(4)),
+        longitude: parseFloat(randomNumber(29, 35, false).toPrecision(4)),
+    };
+};
 
 export const randomEnum = <T>(anEnum: T): T[keyof T] => {
     const enumValues = Object.keys(anEnum)
