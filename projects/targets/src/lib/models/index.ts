@@ -1,2 +1,2 @@
 export * from './target';
-export * from './text-display';
+export * from './text-display-configuration';

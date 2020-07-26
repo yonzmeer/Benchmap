@@ -44,3 +44,10 @@ export const radiansToDegrees = (radians: number) => {
 export const degreesToRadians = (degrees: number) => {
     return degrees * (Math.PI / 180);
 };
+
+export const emptyCanvas = (width: number, height: number): HTMLCanvasElement => {
+    const canvas = document.createElement('canvas');
+    canvas.height = height;
+    canvas.width = width;
+    return canvas;
+};

@@ -1,7 +1,7 @@
 import { ElementRef, Injectable, NgZone } from '@angular/core';
 import {
   ArcGisMapServerImageryProvider, Camera, ImageryLayer,
-  Rectangle, SceneMode, Viewer,
+  Rectangle, SceneMode, Viewer, OpenStreetMapImageryProvider,
 } from 'cesium';
 import { degreesToRadians } from 'projects/general-utils/src/public-api';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
@@ -77,6 +77,9 @@ export class CesiumMapService {
         navigationHelpButton: false,
         navigationInstructionsInitiallyVisible: false,
         clockViewModel: null,
+        imageryProvider: new OpenStreetMapImageryProvider({
+          url: 'https://a.tile.openstreetmap.org/'
+        }),
       });
     });
 

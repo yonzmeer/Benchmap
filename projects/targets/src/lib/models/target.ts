@@ -1,4 +1,4 @@
-import { LatLng } from 'projects/general-utils/src/lib/models';
+import { LatLng } from 'projects/general-utils/src/public-api';
 
 export interface Target {
     id: string;
@@ -25,6 +25,15 @@ export enum Nationality {
     French,
     Chinese,
     German,
+    Japanese,
+    Mexican,
+    Spanish,
+    Turkish,
+    Portugese,
+    Brazilian,
+    Nigerian,
+    Lybian,
+    Tunisian
 }
 
 export enum Costume {

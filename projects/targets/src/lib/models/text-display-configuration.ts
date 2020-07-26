@@ -1,4 +1,4 @@
-export interface TextDisplay {
+export interface TextDisplayConfiguration {
     name?: boolean;
     nickname?: boolean;
     updateTime?: boolean;

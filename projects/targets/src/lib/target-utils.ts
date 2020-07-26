@@ -2,6 +2,13 @@ import { Costume, Mood, Nationality, Target } from './models/target';
 import { randomString, randomNumber, randomEnum, randomArray, randomDate, randomEnumArray, randomLatLng } from 'projects/general-utils/src/public-api';
 import { v4 as uuid } from 'uuid';
 
+const MOOD_TO_COLOR = new Map<Mood, string>([
+    [Mood.bad, 'red'],
+    [Mood.chill, 'green'],
+    [Mood.good, 'teal'],
+    [Mood.neutral, 'purple'],
+]);
+
 export const emptyTarget = (): Target => {
     return {
         id: undefined,
@@ -28,3 +35,6 @@ export const randomTarget = (): Target => {
     };
 };
 
+export const moodToColor = (mood: Mood): string => {
+    return MOOD_TO_COLOR.get(mood);
+};

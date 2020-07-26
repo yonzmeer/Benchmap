@@ -1,7 +1,7 @@
 import { Component, OnDestroy } from '@angular/core';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { emptyTarget, Mood, Nationality, Target, TargetsService } from 'projects/targets/src/public-api';
 import { Subject } from 'rxjs';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
 @UntilDestroy()
 @Component({
