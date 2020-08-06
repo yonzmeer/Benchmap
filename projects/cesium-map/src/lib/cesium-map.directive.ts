@@ -1,14 +1,13 @@
 import { Directive, ElementRef, Input, OnInit } from '@angular/core';
-import { CesiumMapService } from './cesium-map.service';
-import { Location } from './models/location';
+import { Location, MapDirective } from 'projects/general-utils/src/public-api';
+import { CesiumMapService } from '../public-api';
 
 @Directive({
   selector: '[libCesiumMap]',
   exportAs: 'libCesiumMap'
 })
-export class CesiumMapDirective implements OnInit {
+export class CesiumMapDirective extends MapDirective implements OnInit {
   @Input() initialLocation: Location;
-
   @Input() set maxZoomIn(value: number) {
     this.cesiumMapService.maxZoomIn = value;
   }
@@ -18,12 +17,13 @@ export class CesiumMapDirective implements OnInit {
   }
 
   constructor(
-    private elementRef: ElementRef,
+    protected elementRef: ElementRef,
     private cesiumMapService: CesiumMapService
   ) {
+    super(elementRef);
   }
 
-  ngOnInit() {
-    this.cesiumMapService.initCesiumViewer(this.elementRef, this.initialLocation);
+  ngOnInit(): void {
+    this.cesiumMapService.initMap(this.elementRef, this.initialLocation);
   }
 }

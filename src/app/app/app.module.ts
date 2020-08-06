@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { CesiumMapService, CesiumTargetsDrawerService } from 'projects/cesium-map/src/public-api';
+import { OlMapModule } from 'projects/ol-map/src/public-api';
 import { TargetsModule } from 'projects/targets/src/public-api';
+import { CesiumComponent } from '../cesium/cesium.component';
+import { OlComponent } from '../ol/ol.component';
+import { SharedModule } from '../shared/shared.module';
+import { StreamComponent } from '../stream/stream.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SharedModule } from '../shared/shared.module';
-import { CesiumComponent } from '../cesium/cesium.component';
-import { StreamComponent } from '../stream/stream.component';
-import { CesiumMapModule } from 'projects/cesium-map/src/public-api';
-import { OlComponent } from '../ol/ol.component';
-import { OlMapModule } from 'projects/ol-map/src/public-api';
 
 @NgModule({
   declarations: [
@@ -21,11 +21,10 @@ import { OlMapModule } from 'projects/ol-map/src/public-api';
     BrowserModule,
     AppRoutingModule,
     SharedModule,
-    TargetsModule.forRoot(),
-    CesiumMapModule,
     OlMapModule,
+    TargetsModule.forRoot(),
   ],
-  providers: [],
+  providers: [CesiumTargetsDrawerService, CesiumMapService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

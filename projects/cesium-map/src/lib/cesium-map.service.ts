@@ -1,15 +1,13 @@
 import { ElementRef, Injectable, NgZone } from '@angular/core';
 import {
   ArcGisMapServerImageryProvider, Camera, ImageryLayer,
-  Rectangle, SceneMode, Viewer, OpenStreetMapImageryProvider,
+  OpenStreetMapImageryProvider, Rectangle, SceneMode, Viewer
 } from 'cesium';
-import { degreesToRadians } from 'projects/general-utils/src/public-api';
+import { degreesToRadians, Location, MapFeature, MapService } from 'projects/general-utils/src/public-api';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
-import { Location } from './models/location';
-import { MapFeature } from './models/map-feature';
 
 @Injectable()
-export class CesiumMapService {
+export class CesiumMapService extends MapService {
 
   private viewerReady$ = new Subject<void>();
   private cesiumViewer: Viewer;
@@ -19,13 +17,15 @@ export class CesiumMapService {
   private maxZoomOut$ = new BehaviorSubject<number>(0);
   private currentRotation$ = new BehaviorSubject<number>(0);
 
-  constructor(private zone: NgZone) { }
+  constructor(private zone: NgZone) {
+    super();
+  }
 
   get viewer(): Viewer {
     return this.cesiumViewer;
   }
 
-  get viewerReady(): Observable<void> {
+  get mapReady(): Observable<void> {
     return this.viewerReady$.asObservable();
   }
 
@@ -57,7 +57,7 @@ export class CesiumMapService {
     this.currentRotation$.next(degrees);
   }
 
-  initCesiumViewer(elementRef: ElementRef, initialLocation: Location) {
+  initMap(elementRef: ElementRef, initialLocation: Location): void {
     this.zone.runOutsideAngular(() => {
       if (initialLocation) {
         this.setDefaultView(initialLocation);

@@ -6,14 +6,14 @@ import { createImageCollection, ImageCollection } from './image-collection';
 import { latLngToCartesian3 } from './utils';
 
 @Injectable()
-export class TargetsDrawerService {
+export class CesiumTargetsDrawerService {
   private targets: ImageCollection;
 
   constructor(
     private cesiumMapService: CesiumMapService,
     private imagesService: ImagesService,
   ) {
-    this.cesiumMapService.viewerReady.subscribe(() => {
+    this.cesiumMapService.mapReady.subscribe(() => {
       this.targets = createImageCollection({
         viewer: this.cesiumMapService.viewer,
       });

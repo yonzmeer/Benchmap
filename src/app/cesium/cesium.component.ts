@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { Location } from 'projects/cesium-map/src/lib/models';
-import { TargetsDrawerService } from 'projects/cesium-map/src/lib/targets-drawer.service';
+import { CesiumTargetsDrawerService } from 'projects/cesium-map/src/lib/cesium-targets-drawer.service';
+import { Location } from 'projects/general-utils/src/public-api';
 import { TargetsService, TextDisplayConfiguration } from 'projects/targets/src/public-api';
 
 @UntilDestroy()
@@ -29,15 +29,15 @@ export class CesiumComponent implements OnInit, OnDestroy {
 
   constructor(
     private targetsService: TargetsService,
-    private targetsDrawerService: TargetsDrawerService,
+    private cesiumTargetsDrawerService: CesiumTargetsDrawerService,
   ) {
     this.targetsService.createTargetStream(
-      { targetsAmount: 100 },
+      { targetsAmount: 1 },
       { updatesAmount: Infinity, updateInterval: 1000, updateProbability: 1 },
     ).pipe(
       untilDestroyed(this),
     ).subscribe(targets => {
-      targets.forEach(target => this.targetsDrawerService.drawTarget(target, this.TEXT_DISPLAY_CONFIGURATION));
+      targets.forEach(target => this.cesiumTargetsDrawerService.drawTarget(target, this.TEXT_DISPLAY_CONFIGURATION));
     });
   }
 
