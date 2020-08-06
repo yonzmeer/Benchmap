@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ImagesService } from 'projects/targets/src/lib/images.service';
-import { Target, TextDisplayConfiguration } from 'projects/targets/src/public-api';
+import { ImagesService, Target, TextDisplayConfiguration } from '@targets';
 import { CesiumMapService } from './cesium-map.service';
 import { createImageCollection, ImageCollection } from './image-collection';
 import { latLngToCartesian3 } from './utils';

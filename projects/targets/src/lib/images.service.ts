@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { emptyCanvas } from 'projects/general-utils/src/public-api';
+import { emptyCanvas } from '@general-utils';
 import { TextDisplayConfiguration } from './models';
 import { Target } from './models/target';
 import { moodToColor } from './target-utils';

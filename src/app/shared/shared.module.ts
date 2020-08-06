@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { CesiumMapDirective } from 'projects/cesium-map/src/lib/cesium-map.directive';
-import { OlMapDirective } from 'projects/ol-map/src/lib/ol-map.directive';
+import { CesiumMapDirective } from '@cesium-map';
+import { OlMapDirective } from '@ol-map';
 import { Enum2StringPipe } from './enum-2-string.pipe';
 import { Latlng2StringPipe } from './latlng-2-string.pipe';
 

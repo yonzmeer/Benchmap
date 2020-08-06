@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
+import { Target } from '@targets';
 import { combineLatest, interval, Observable } from 'rxjs';
 import { distinctUntilChanged, map, take } from 'rxjs/operators';
-import { Target } from './models/target';
 import { randomTarget } from './target-utils';
 
 @Injectable()

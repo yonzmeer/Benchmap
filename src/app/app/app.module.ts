@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { CesiumMapService, CesiumTargetsDrawerService } from 'projects/cesium-map/src/public-api';
-import { OlMapModule } from 'projects/ol-map/src/public-api';
-import { TargetsModule } from 'projects/targets/src/public-api';
+import { CesiumMapService, CesiumTargetsDrawerService } from '@cesium-map';
+import { OlMapModule } from '@ol-map';
+import { TargetsModule } from '@targets';
 import { CesiumComponent } from '../cesium/cesium.component';
 import { OlComponent } from '../ol/ol.component';
 import { SharedModule } from '../shared/shared.module';

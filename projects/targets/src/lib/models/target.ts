@@ -1,4 +1,4 @@
-import { LatLng } from 'projects/general-utils/src/public-api';
+import { LatLng } from '@general-utils';
 
 export interface Target {
     id: string;

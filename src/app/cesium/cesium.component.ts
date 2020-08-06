@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { CesiumTargetsDrawerService } from '@cesium-map';
+import { Location } from '@general-utils';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { CesiumTargetsDrawerService } from 'projects/cesium-map/src/lib/cesium-targets-drawer.service';
-import { Location } from 'projects/general-utils/src/public-api';
-import { TargetsService, TextDisplayConfiguration } from 'projects/targets/src/public-api';
+import { TargetsService, TextDisplayConfiguration } from '@targets';
 
 @UntilDestroy()
 @Component({

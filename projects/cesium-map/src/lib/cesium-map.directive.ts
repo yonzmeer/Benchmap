@@ -1,5 +1,5 @@
 import { Directive, ElementRef, Input, OnInit } from '@angular/core';
-import { Location, MapDirective } from 'projects/general-utils/src/public-api';
+import { Location, MapDirective } from '@general-utils';
 import { CesiumMapService } from '../public-api';
 
 @Directive({

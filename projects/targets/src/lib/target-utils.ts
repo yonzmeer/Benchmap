@@ -1,6 +1,6 @@
-import { Costume, Mood, Nationality, Target } from './models/target';
-import { randomString, randomNumber, randomEnum, randomArray, randomDate, randomEnumArray, randomLatLng } from 'projects/general-utils/src/public-api';
+import { randomDate, randomEnum, randomEnumArray, randomLatLng, randomNumber, randomString } from '@general-utils';
 import { v4 as uuid } from 'uuid';
+import { Costume, Mood, Nationality, Target } from './models/target';
 
 const MOOD_TO_COLOR = new Map<Mood, string>([
     [Mood.bad, 'red'],

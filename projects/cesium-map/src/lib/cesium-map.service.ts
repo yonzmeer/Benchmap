@@ -1,9 +1,9 @@
 import { ElementRef, Injectable, NgZone } from '@angular/core';
+import { degreesToRadians, Location, MapFeature, MapService } from '@general-utils';
 import {
   ArcGisMapServerImageryProvider, Camera, ImageryLayer,
   OpenStreetMapImageryProvider, Rectangle, SceneMode, Viewer
 } from 'cesium';
-import { degreesToRadians, Location, MapFeature, MapService } from 'projects/general-utils/src/public-api';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 @Injectable()
