@@ -19,20 +19,20 @@ export class ImagesService {
     const numberOfTexts = displayedTexts.length;
 
     if (numberOfTexts === 0) {
-      return emptyCanvas(200, 200);
+      return emptyCanvas(0, 0);
     }
 
     const canvas = emptyCanvas(150, numberOfTexts * 30);
     const context = canvas.getContext('2d');
     context.font = '20px Comic Sans MS';
     context.fillStyle = moodToColor(target.mood);
-    context.textAlign = 'center';
+    context.textAlign = 'left';
+    context.textBaseline = 'middle';
 
     const numberOfTextsPositioning = numberOfTexts * 2;
     for (let positionIndex = 1, textIndex = 0; positionIndex <= numberOfTextsPositioning - 1; positionIndex += 2, textIndex++) {
-      const x = canvas.width / 2;
       const y = canvas.height * positionIndex / numberOfTextsPositioning;
-      context.fillText(displayedTexts[textIndex], x, y);
+      context.fillText(displayedTexts[textIndex], 0, y);
     }
 
     return canvas;

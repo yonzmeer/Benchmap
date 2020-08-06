@@ -23,7 +23,7 @@ export class StreamComponent implements OnDestroy {
   ) {
     this.targetsService.createTargetStream(
       { targetsAmount: 100 },
-      { updatesAmount: 5000, updateInterval: 300 }
+      { updatesAmount: 5000, updateInterval: 300, updateProbability: 1 }
     ).pipe(
       untilDestroyed(this),
     ).subscribe(this.targets$);

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { interval, Observable, of, merge, EMPTY, zip, combineLatest } from 'rxjs';
-import { switchMap, take, map } from 'rxjs/operators';
+import { combineLatest, interval, Observable } from 'rxjs';
+import { distinctUntilChanged, map, take } from 'rxjs/operators';
 import { Target } from './models/target';
 import { randomTarget } from './target-utils';
 
@@ -8,28 +8,45 @@ import { randomTarget } from './target-utils';
 export class TargetsService {
 
     createTargetStream(
-        { targetsAmount }: TargetsStreamParams,
+        targetsStreamParams: TargetsStreamParams,
         targetUpdateParmas: TargetUpdateParmas,
     ): Observable<Target[]> {
+        return combineLatest(
+            this.createUpdatingTargets(targetsStreamParams, targetUpdateParmas),
+        );
+    }
+
+    createUpdatingTargets(
+        { targetsAmount }: TargetsStreamParams,
+        targetUpdateParmas: TargetUpdateParmas,
+    ): Observable<Target>[] {
         const targetsWithUpdates = Array.from({ length: targetsAmount }, () => {
-            const targetwithUpdates = this.createTargetWithUpdates(targetUpdateParmas);
+            const targetwithUpdates = this.createUpdatingTarget(targetUpdateParmas);
             return targetwithUpdates;
         });
 
-        return combineLatest(targetsWithUpdates);
+        return targetsWithUpdates;
     }
 
-    createTargetWithUpdates({ updatesAmount, updateInterval }: TargetUpdateParmas): Observable<Target> {
-        const target = randomTarget();
+    createUpdatingTarget(
+        { updatesAmount, updateInterval, updateProbability }: TargetUpdateParmas
+    ): Observable<Target> {
+        let target = randomTarget();
         return interval(updateInterval).pipe(
             take(updatesAmount),
-            switchMap(() => {
-                const { id, name, ...rest } = randomTarget();
-                return of({
+            map(() => {
+                if (Math.random() > updateProbability) {
+                    return target;
+                }
+                const { id, name, mood, nationality, ...rest } = randomTarget();
+                const newTarget: Target = {
                     ...target,
                     ...rest
-                });
-            })
+                };
+                target = newTarget;
+                return target;
+            }),
+            distinctUntilChanged((before, after) => JSON.stringify(before) === JSON.stringify(after)),
         );
 
     }
@@ -38,6 +55,7 @@ export class TargetsService {
 export interface TargetUpdateParmas {
     updatesAmount: number;
     updateInterval: number;
+    updateProbability: number;
 }
 
 export interface TargetsStreamParams {
