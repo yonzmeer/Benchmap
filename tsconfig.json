@@ -27,6 +27,10 @@
       "cesium-map": [
         "dist/cesium-map/cesium-map",
         "dist/cesium-map"
+      ],
+      "ol-map": [
+        "dist/ol-map/ol-map",
+        "dist/ol-map"
       ]
     }
   },

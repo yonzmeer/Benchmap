@@ -251,6 +251,46 @@
           }
         }
       }
+    },
+    "ol-map": {
+      "projectType": "library",
+      "root": "projects/ol-map",
+      "sourceRoot": "projects/ol-map/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/ol-map/tsconfig.lib.json",
+            "project": "projects/ol-map/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ol-map/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ol-map/src/test.ts",
+            "tsConfig": "projects/ol-map/tsconfig.spec.json",
+            "karmaConfig": "projects/ol-map/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ol-map/tsconfig.lib.json",
+              "projects/ol-map/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "benchmap"
