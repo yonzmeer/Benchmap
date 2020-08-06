@@ -12,10 +12,10 @@ import { TargetsService, TextDisplayConfiguration } from 'projects/targets/src/p
 })
 export class CesiumComponent implements OnInit, OnDestroy {
   readonly INITIAL_LOCATION: Location = {
-    west: 29.0,
-    south: 29.0,
-    east: 35.0,
-    north: 35.0
+    west: 25.0,
+    south: 25.0,
+    east: 40.0,
+    north: 40.0
   };
 
   readonly MAX_ZOOM_IN = 20000;
@@ -32,8 +32,8 @@ export class CesiumComponent implements OnInit, OnDestroy {
     private targetsDrawerService: TargetsDrawerService,
   ) {
     this.targetsService.createTargetStream(
-      { targetsAmount: 300 },
-      { updatesAmount: 1, updateInterval: 1000, updateProbability: 1 },
+      { targetsAmount: 100 },
+      { updatesAmount: Infinity, updateInterval: 1000, updateProbability: 1 },
     ).pipe(
       untilDestroyed(this),
     ).subscribe(targets => {

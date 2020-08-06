@@ -38,10 +38,11 @@ export class TargetsService {
                 if (Math.random() > updateProbability) {
                     return target;
                 }
-                const { id, name, mood, nationality, ...rest } = randomTarget();
+
+                const { id, name, mood, nationality, ...updatedValues } = randomTarget();
                 const newTarget: Target = {
                     ...target,
-                    ...rest
+                    ...updatedValues
                 };
                 target = newTarget;
                 return target;
