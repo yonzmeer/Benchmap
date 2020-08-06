@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CesiumComponent } from '../cesium/cesium.component';
 import { StreamComponent } from '../stream/stream.component';
-import { OlComponent } from '../ol/ol/ol.component';
+import { OlComponent } from '../ol/ol.component';
 
 
 const routes: Routes = [

@@ -7,7 +7,7 @@ import { SharedModule } from '../shared/shared.module';
 import { CesiumComponent } from '../cesium/cesium.component';
 import { StreamComponent } from '../stream/stream.component';
 import { CesiumMapModule } from 'projects/cesium-map/src/public-api';
-import { OlComponent } from '../ol/ol/ol.component';
+import { OlComponent } from '../ol/ol.component';
 import { OlMapModule } from 'projects/ol-map/src/public-api';
 
 @NgModule({
