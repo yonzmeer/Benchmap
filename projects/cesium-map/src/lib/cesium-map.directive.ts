@@ -7,7 +7,6 @@ import { CesiumMapService } from '../public-api';
   exportAs: 'libCesiumMap'
 })
 export class CesiumMapDirective extends MapDirective implements OnInit {
-  @Input() initialLocation: Location;
   @Input() set maxZoomIn(value: number) {
     this.cesiumMapService.maxZoomIn = value;
   }

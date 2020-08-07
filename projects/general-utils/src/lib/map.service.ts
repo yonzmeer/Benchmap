@@ -1,26 +1,43 @@
 import { ElementRef } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { Location, MapFeature } from './models';
 
 export abstract class MapService {
+  protected mapReady$ = new Subject<void>();
 
-  constructor() { }
+  protected maxZoomIn$ = new BehaviorSubject<number>(0);
+  protected maxZoomOut$ = new BehaviorSubject<number>(0);
+  protected currentRotation$ = new BehaviorSubject<number>(0);
 
-  abstract get mapReady(): Observable<void>;
+  get mapReady(): Observable<void> {
+    return this.mapReady$.asObservable();
+  }
 
   abstract get currentZoom(): number;
 
-  abstract get maxZoomOut(): number;
+  get maxZoomOut(): number {
+    return this.maxZoomOut$.value;
+  }
 
-  abstract set maxZoomOut(meters: number);
+  set maxZoomOut(amount: number) {
+    this.maxZoomOut$.next(amount);
+  }
 
-  abstract get maxZoomIn(): number;
+  get maxZoomIn(): number {
+    return this.maxZoomIn$.value;
+  }
 
-  abstract set maxZoomIn(meters: number);
+  set maxZoomIn(amount: number) {
+    this.maxZoomIn$.next(amount);
+  }
 
-  abstract get currentRotation();
+  get currentRotation() {
+    return this.currentRotation$.value;
+  }
 
-  abstract set currentRotation(degrees: number);
+  set currentRotation(degrees: number) {
+    this.currentRotation$.next(degrees);
+  }
 
   abstract initMap(elementRef: ElementRef, initalLocation: Location): void;
 
@@ -30,7 +47,10 @@ export abstract class MapService {
 
   abstract rotate(degrees: number): void;
 
-  abstract resetRotation(): void;
+  protected resetRotation(): void {
+    this.rotate(360 - this.currentRotation);
+    this.currentRotation = 0;
+  }
 
   abstract addArcGisImageryLayer(name: string, mapFeature: MapFeature): void;
 

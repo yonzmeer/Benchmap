@@ -4,18 +4,12 @@ import {
   ArcGisMapServerImageryProvider, Camera, ImageryLayer,
   OpenStreetMapImageryProvider, Rectangle, SceneMode, Viewer
 } from 'cesium';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 @Injectable()
 export class CesiumMapService extends MapService {
-
-  private viewerReady$ = new Subject<void>();
   private cesiumViewer: Viewer;
 
   private imageryLayers = new Map<string, ImageryLayer>();
-  private maxZoomIn$ = new BehaviorSubject<number>(0);
-  private maxZoomOut$ = new BehaviorSubject<number>(0);
-  private currentRotation$ = new BehaviorSubject<number>(0);
 
   constructor(private zone: NgZone) {
     super();
@@ -25,36 +19,8 @@ export class CesiumMapService extends MapService {
     return this.cesiumViewer;
   }
 
-  get mapReady(): Observable<void> {
-    return this.viewerReady$.asObservable();
-  }
-
   get currentZoom(): number {
     return this.cesiumViewer.camera.positionCartographic.height;
-  }
-
-  get maxZoomOut(): number {
-    return this.maxZoomOut$.value;
-  }
-
-  set maxZoomOut(meters: number) {
-    this.maxZoomOut$.next(meters);
-  }
-
-  get maxZoomIn(): number {
-    return this.maxZoomIn$.value;
-  }
-
-  set maxZoomIn(meters: number) {
-    this.maxZoomIn$.next(meters);
-  }
-
-  get currentRotation() {
-    return this.currentRotation$.value;
-  }
-
-  set currentRotation(degrees: number) {
-    this.currentRotation$.next(degrees);
   }
 
   initMap(elementRef: ElementRef, initialLocation: Location): void {
@@ -83,13 +49,17 @@ export class CesiumMapService extends MapService {
       });
     });
 
-    this.viewerReady$.next(null);
+    this.mapReady$.next();
+    this.mapReady$.complete();
 
-    this.maxZoomIn$
-      .subscribe(val => this.cesiumViewer.scene.screenSpaceCameraController.minimumZoomDistance = val);
 
-    this.maxZoomOut$
-      .subscribe(val => this.cesiumViewer.scene.screenSpaceCameraController.maximumZoomDistance = val);
+    this.maxZoomIn$.subscribe(val =>
+      this.cesiumViewer.scene.screenSpaceCameraController.minimumZoomDistance = val
+    );
+
+    this.maxZoomOut$.subscribe(val =>
+      this.cesiumViewer.scene.screenSpaceCameraController.maximumZoomDistance = val
+    );
   }
 
   zoomIn(amount: number): void {
@@ -113,11 +83,6 @@ export class CesiumMapService extends MapService {
   rotate(degrees: number): void {
     this.cesiumViewer.camera.twistLeft(degreesToRadians(degrees));
     this.currentRotation += degrees;
-  }
-
-  resetRotation(): void {
-    this.rotate(360 - this.currentRotation);
-    this.currentRotation = 0;
   }
 
   addArcGisImageryLayer(name: string, mapFeature: MapFeature): void {

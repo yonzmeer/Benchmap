@@ -7,10 +7,17 @@ import { OlComponent } from '../ol/ol.component';
 
 const routes: Routes = [
   {
-    path: 'cesium', component: CesiumComponent, data: { menu: true },
-    loadChildren: () => import('../../../projects/cesium-map/src/lib/cesium-map.module').then(m => m.CesiumMapModule)
+    path: 'cesium',
+    component: CesiumComponent,
+    data: { menu: true },
+    loadChildren: () => import('@cesium-map').then(m => m.CesiumMapModule)
   },
-  { path: 'openlayers', component: OlComponent, data: { menu: true } },
+  {
+    path: 'openlayers',
+    component: OlComponent,
+    data: { menu: true },
+    loadChildren: () => import('@ol-map').then(m => m.OlMapModule)
+  },
   { path: 'stream', component: StreamComponent, data: { menu: true } },
   { path: '**', pathMatch: 'full', redirectTo: '' },
 ];

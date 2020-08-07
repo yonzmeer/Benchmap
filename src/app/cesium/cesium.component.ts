@@ -19,7 +19,7 @@ export class CesiumComponent implements OnInit, OnDestroy {
   };
 
   readonly MAX_ZOOM_IN = 20000;
-  readonly MAX_ZOOM_OUT = 1500000;
+  readonly MAX_ZOOM_OUT = 6000000;
 
   private readonly TEXT_DISPLAY_CONFIGURATION: TextDisplayConfiguration = {
     name: true,
