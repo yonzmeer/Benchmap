@@ -18,7 +18,7 @@ export class ImageCollection {
 
     constructor(private viewer: Viewer) {
         this.idToBillboard = new Map();
-        this.billboardCollection = viewer.scene.primitives.add(new BillboardCollection());
+        this.billboardCollection = this.viewer.scene.primitives.add(new BillboardCollection());
     }
 
     add(id: string, billboard: PBillboard): Billboard {

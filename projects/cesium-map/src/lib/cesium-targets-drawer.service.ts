@@ -1,17 +1,19 @@
 import { Injectable } from '@angular/core';
 import { ImagesService, Target, TextDisplayConfiguration } from '@targets';
+import { TargetsDrawer } from 'projects/targets/src/lib/targets-drawer';
 import { CesiumMapService } from './cesium-map.service';
 import { createImageCollection, ImageCollection } from './image-collection';
 import { latLngToCartesian3 } from './utils';
 
 @Injectable()
-export class CesiumTargetsDrawerService {
+export class CesiumTargetsDrawerService extends TargetsDrawer {
   private targets: ImageCollection;
 
   constructor(
     private cesiumMapService: CesiumMapService,
     private imagesService: ImagesService,
   ) {
+    super();
     this.cesiumMapService.mapReady.subscribe(() => {
       this.targets = createImageCollection({
         viewer: this.cesiumMapService.viewer,
@@ -21,7 +23,7 @@ export class CesiumTargetsDrawerService {
 
   drawTarget(target: Target, textDisplayConfiguration: TextDisplayConfiguration): void {
     const canvas = this.imagesService.createTextFieldsImage(target, textDisplayConfiguration);
-    const billboard = this.targets.add(
+    this.targets.add(
       target.id,
       {
         image: canvas.toDataURL(),

@@ -8,14 +8,10 @@ import { Observable } from 'rxjs';
 
 @Injectable()
 export class OlMapService extends MapService {
-  private map: OlMap;
+  public map: OlMap;
 
   constructor(private zone: NgZone) {
     super();
-  }
-
-  get mapReady(): Observable<void> {
-    throw new Error('Method not implemented.');
   }
 
   get currentZoom(): number {
@@ -46,36 +42,15 @@ export class OlMapService extends MapService {
     });
   }
 
-  zoomIn(amount: number): void {
-    throw new Error('Method not implemented.');
-  }
+  zoomIn(amount: number): void { }
 
-  zoomOut(amount: number): void {
-    throw new Error('Method not implemented.');
-  }
+  zoomOut(amount: number): void { }
 
-  rotate(degrees: number): void {
-    throw new Error('Method not implemented.');
-  }
+  rotate(degrees: number): void { }
 
-  addArcGisImageryLayer(name: string, mapFeature: MapFeature): void {
-    throw new Error('Method not implemented.');
-  }
+  addArcGisImageryLayer(name: string, mapFeature: MapFeature): void { }
 
-  removeArcGisImageryLayer(name: string): void {
-    throw new Error('Method not implemented.');
-  }
+  removeArcGisImageryLayer(name: string): void { }
 
-  removeAllArcGisLayers(destroy: boolean): void {
-    throw new Error('Method not implemented.');
-  }
-
-  private getExtent(location: Location): Extent {
-    return [
-      location.west,
-      location.south,
-      location.east,
-      location.north,
-    ];
-  }
+  removeAllArcGisLayers(destroy: boolean): void { }
 }
