@@ -1,6 +1,6 @@
 import { Directive, ElementRef, Input, OnInit } from '@angular/core';
-import { Location, MapDirective } from '@general-utils';
-import { CesiumMapService } from '../public-api';
+import { MapDirective } from '@general-utils';
+import { CesiumMapService } from './cesium-map.service';
 
 @Directive({
   selector: '[libCesiumMap]',
